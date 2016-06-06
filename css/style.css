@@ -1,0 +1,116 @@
+body {
+	background-image: url(../img/1.png);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(3, 106, 164, 1);
+}
+.main {
+	margin-top: -20px;
+	padding: 0;	
+}
+.section {
+	border: 1px solid white;
+	margin: 0;
+}
+.mynav {
+	margin-bottom: 0 !important;
+}
+.main {
+	width: 100%;
+	height: 720px;
+	background: rgba(95, 95, 122, 0.8);
+}
+.section {
+	width: 750px;
+	height: 400px;
+	margin: 0 auto;
+	position: relative;
+	top: 150px;
+	padding: 0 !important;
+	background: rgba(255, 255, 255, 0.5);
+}
+.divName {
+	padding-left: 0 !important;
+}
+.section input {
+	height: 40px;
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: 10px;
+}
+.section input[type = email] {
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: 10px;
+}
+.section input[type = date] {
+	height: 40px;
+	text-align: center;
+	font-size: 1.3em;
+	margin-bottom: 10px;
+}
+.section label {
+	font-size: 1.5em;
+}
+.section button {
+	width: 150px;
+	margin: 40px 10px;
+}
+
+#art {
+	width: 500px;
+	height: 110px;
+	margin: 0 auto;
+	padding: 15px;
+	position: relative;
+	top: 180px;
+}
+.footer {
+	background: black;
+	width: 100%;
+	height: 200px;
+	padding: 20px;
+}
+
+/*---newTable---*/
+
+#myTable {
+	margin-left: 4px;
+}
+#myTable tr th, td {
+	border: 1px solid white;
+	width: 115px;
+	height: 40px;
+	text-align: center;
+	color: white;
+}
+
+/*--media--*/
+@media all and (max-width: 770px) {
+.section {
+	width: 400px;
+	height: 500px;
+	top: 50px;
+}
+.section label {
+	display: none;
+}
+.section input[type = date] {
+	position: relative;
+	bottom: 20px;
+	left: 90px;
+}
+.section button {
+	margin: 2px;
+}
+#art {
+	width: 400px;
+	position: relative;
+	top: 80px;
+}
+
+}/*--/media--*/

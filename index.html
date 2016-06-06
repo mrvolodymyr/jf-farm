@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse mynav">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="index.html">Bootstrap</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	    	<li class="active"><a href="index.html">Task 1</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	<main class="container-fluid main">
+		<section class="section">
+			<form id="form">
+			<div class="col-sm-12 divName">
+				<div class="col-sm-6">
+					<br/>
+	                <label for="name">Name:</label>
+	                <br/>
+	                <input type="text" name="name" id="name" class="vo_input" placeholder="Name" required />
+	                <br />
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<br/>
+	                <label for="surname">Surame:</label>
+	                <br/>
+	                <input type="text" name="surname" id="surname" class="vo_input" placeholder="Surame" required />
+	                <br />
+				</div>
+			</div>
+			<div class="col-sm-12  divName">
+				<div class="col-md-8 col-sm-8 col-xs-12 border1">
+					<br/>
+	                <label for="email">Email:</label>
+	                <br/>
+	                <input type="email" name="email" id="email" class="vo_input" placeholder="Email" required /><br/>
+	                <br/> 
+				</div>
+				<div class="col-md-4 col-sm-4 col-xs-6">
+					<br/>
+	                <label for="date">Birthday</label>
+	                <br />
+	                <input type="date" id="date" class="vo_inp" min="1900-01-01" required />
+	                <br />
+				</div>
+			</div>
+			<div class="col-sm-12">
+				<div class="col-md-4 col-sm-4 col-xs-4 col-sm-offset-0 col-xs-offset-3">
+					<button type="button" id="btn1" class="btn btn-primary" onclick="save()">Save</button>
+				</div>
+				<div class="col-md-4 col-sm-4 col-xs-4 col-sm-offset-0 col-xs-offset-3">
+					<button type="button" id="btn2" class="btn btn-primary" onclick="table()">Table</button>
+				</div>
+				<div class="col-md-4 col-sm-4 col-xs-4 col-sm-offset-0 col-xs-offset-3">
+					<button type="button" id="btn3" class="btn btn-primary" onclick="del()">Clear</button>
+				</div>
+			</div>
+			</form>
+			
+		</section>
+		<article id="art">
+			<table id="myTable">
+				<tr id="myTr"></tr>
+			</table>
+		</article>
+		
+	</main>
+	<footer class="footer">
+		<h5>&#169 2016 v.osipov</h5>
+	</footer>
+	
+	<script>	
+
+	var Person = {};
+	document.getElementById( "btn2" ).disabled = true;
+	document.getElementById( "btn3" ).disabled = true;
+
+		function save() {
+
+			document.getElementById( "btn2" ).disabled = false;
+
+			var name = document.getElementById( 'name' ).value;
+			var surname = document.getElementById( 'surname' ).value;
+			var date = document.getElementById( 'date' ).value;
+			var email = document.getElementById( 'email' ).value;
+			var reg =  /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i;
+
+			if ( name === "" ) {
+			alert( "Please enter your name" );
+			return false;
+			} else if ( name.length < 2 ) {
+					alert("name should have more than 2 symbols")
+					return false;
+					} else 	if ( surname === "" ) {
+							alert( "Please enter your surname" );
+							return false;
+							} else if ( email === "" ) {
+									alert( "Please enter your email" );
+									return false;
+									} else if ( !reg.test( email ) ){
+											alert( "Enter a valid email" );
+											return false;
+										} else if ( date === "" ) {
+												alert( "Please enter your birthday" );
+												return false;
+												} else {
+													document.getElementById( 'form' ).reset();
+													}
+										
+			Person.name = name;
+			Person.surname = surname;
+			Person.email = email;
+			Person.date = date;
+
+		} //function save()
+
+		function table() {
+			
+			document.getElementById( "btn3" ).disabled = false;
+			document.getElementById( "btn2" ).disabled = true;
+			document.getElementById( "btn1" ).disabled = true;
+
+			var art = document.getElementById( "art" );
+
+			var table = document.createElement( "table" );
+
+			var tr = document.createElement( "tr" );
+			tr.setAttribute( "id", "tr" );
+		    document.getElementById( "myTable" ).appendChild(tr);
+
+			var th1 = document.createElement( "th" );
+		    var text1 = document.createTextNode( "Name" );
+		    th1.appendChild(text1);
+		    document.getElementById( "tr" ).appendChild(th1);
+
+		    var th2 = document.createElement( "th" );
+		    var text2 = document.createTextNode( "Surame" );
+		    th2.appendChild(text2);
+		    document.getElementById( "tr" ).appendChild(th2);
+
+		    var th3 = document.createElement( "th" );
+		    var text3 = document.createTextNode( "Email" );
+		    th3.appendChild(text3);
+		    document.getElementById( "tr" ).appendChild(th3);
+
+		    var th4 = document.createElement( "th" );
+		    var text4 = document.createTextNode( "Birthday" );
+		    th4.appendChild(text4);
+		    document.getElementById( "tr" ).appendChild(th4);
+
+		    var tr2 = document.createElement( "tr" );
+			tr2.setAttribute( "id", "tr2" );
+		    document.getElementById( "myTable" ).appendChild(tr2);
+
+			var td1 = document.createElement( "td" );
+		    var text5 = document.createTextNode( Person.name );
+		    td1.setAttribute( "class", "td22" );
+		    td1.appendChild(text5);
+		    document.getElementById( "tr2" ).appendChild(td1);
+
+		    var td2 = document.createElement( "td" );
+		    var text6 = document.createTextNode( Person.surname);
+		    td2.appendChild(text6);
+		    document.getElementById( "tr2" ).appendChild(td2);
+
+		    var td3 = document.createElement( "td" );
+		    var text7 = document.createTextNode( Person.email );
+		    td3.appendChild(text7);
+		    document.getElementById( "tr2" ).appendChild(td3);
+
+		    var td4 = document.createElement( "td" );
+		    var text8 = document.createTextNode( Person.date );
+		    td4.appendChild(text8);
+		    document.getElementById( "tr2" ).appendChild(td4);
+
+		} // table
+		
+		function del() {
+			
+			document.getElementById( "btn3" ).disabled = true;
+			document.getElementById( "btn2" ).disabled = true;
+			document.getElementById( "btn1" ).disabled = false;
+
+			for ( var i = 0; i < 4; i++ ) {
+			document.getElementById( "myTable" ).deleteRow(0);
+			}
+		}
+	</script>
+</body>
+</html>
